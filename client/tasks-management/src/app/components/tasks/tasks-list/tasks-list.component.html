@@ -1,0 +1,26 @@
+<div class="tasks-list__wrapper">
+    <div class="tasks-list__header">
+        <button tuiButton size="m" appearance="flat" (click)="showDialog(test)">Create task</button>
+        <tui-input class="tasks-list__search" role="search" [formControl]="searchControl">
+            Search
+            <input type="text" role="searchbox" tuiTextfield>
+        </tui-input>
+    </div>
+    <div class="tasks-list">
+        <div class="tasks-list__empty" *ngIf="(tasks$ | async)!.length  === 0">
+            There are no tasks yet.
+        </div>
+        <app-tasks-item
+            *ngFor="let task of tasks$ | async"
+            [task]="task"
+            (updateTask)="openTaskFormPopup(task)"
+        ></app-tasks-item>
+    </div>
+</div>
+
+
+<ng-template #test let-observer>
+    <button (click)="observer.complete()" tuiButton>Close popup</button>
+</ng-template>
+
+
