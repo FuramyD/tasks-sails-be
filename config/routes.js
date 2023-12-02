@@ -20,7 +20,8 @@ module.exports.routes = {
   ***************************************************************************/
 
     "/": { view: "pages/homepage" },
-    "POST /tasks/create": { action: "tasks/create" },
+    "POST /tasks": { action: "tasks/create" },
+    "PATCH /tasks/:id/update": { action: "tasks/update" },
     "GET /tasks": { action: "tasks/get" },
     "GET /tasks/:id": { action: "tasks/get-by-id" },
 

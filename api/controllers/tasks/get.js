@@ -8,17 +8,24 @@ module.exports = {
 
 
     inputs: {
-
+        search: { type: "string", required: false },
     },
 
 
     exits: {
-
+        success: {
+            statusCode: 200,
+        }
     },
 
 
-    fn: async function (inputs) {
-        return await Task.find();
+    fn: async function ({ search }) {
+        console.log({ search });
+        return await Task.find({
+            where: {
+                title: { contains: search || "" }
+            }
+        });
     }
 
 

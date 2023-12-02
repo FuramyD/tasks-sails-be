@@ -29,7 +29,7 @@ module.exports = {
 
     fn: async function ({ email, password }, exits) {
         const user = await User.findOne({ email });
-        const compared = await bcrypt.compare(password, user.password);
+        const compared = user ? await bcrypt.compare(password, user.password) : false;
 
         if (!user || !compared) {
             return exits.invalidInput({
@@ -38,7 +38,7 @@ module.exports = {
         }
 
         return exits.success({
-            authToken: generateJwt(user.id, user.email),
+            accessToken: generateJwt(user.id, user.email),
             expirationDate: options.jsonWebTokenOptions.expiresIn,
         });
     }

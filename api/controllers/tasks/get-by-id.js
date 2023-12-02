@@ -26,7 +26,7 @@ module.exports = {
     fn: async function ({ id }, exits) {
 
         // All done.
-        const task = await Task.findOne({ id });
+        const task = await Task.updateOne({ id }).set();
 
         console.log({ task });
 

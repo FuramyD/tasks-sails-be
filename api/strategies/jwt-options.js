@@ -8,4 +8,4 @@ module.exports = {
     jsonWebTokenOptions: {
         expiresIn: process.env.JWT_EXPIRES_IN,
     }
-}
+};

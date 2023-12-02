@@ -16,6 +16,7 @@ module.exports = {
         dueDate: { type: "ref", columnName: "due_date", columnType: "timestamptz" },
         completed: { type: "boolean", defaultsTo: false, allowNull: false },
         userId: { type: "number", columnName: "user_id" },
+        difficulty: { type: "number", defaultsTo: 1, allowNull: false, max: 3 },
 
 
         //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
