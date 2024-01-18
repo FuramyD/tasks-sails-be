@@ -13,8 +13,6 @@
  * https://sailsjs.com/docs/concepts/models-and-orm/model-settings
  */
 
-const { MIGRATION } = require("../constants/migrate");
-
 module.exports.models = {
 
 
@@ -55,7 +53,7 @@ module.exports.models = {
      *                                                                          *
      ***************************************************************************/
 
-    migrate: MIGRATION,
+    migrate: "alter",
 
 
     /***************************************************************************
