@@ -11,12 +11,16 @@ module.exports = {
     primaryKey: "id",
 
     attributes: {
-        title: { type: "string", maxLength: 256, required: true, allowNull: false },
+        title: { type: "string", columnType: "citext", maxLength: 256, required: true, allowNull: false },
         description: { type: "string", maxLength: 1024, defaultsTo: "" },
         dueDate: { type: "ref", columnName: "due_date", columnType: "timestamptz" },
         completed: { type: "boolean", defaultsTo: false, allowNull: false },
         userId: { type: "number", columnName: "user_id" },
         difficulty: { type: "number", defaultsTo: 1, allowNull: false, max: 3 },
+        assignee: { model: "user" },
+        createdBy: { model: "user" },
+        comments: { collection: "comment", via: "task" },
+        labels: { collection: "label" },
 
 
         //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

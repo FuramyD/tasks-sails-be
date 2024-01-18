@@ -12,6 +12,7 @@ module.exports = {
 
     attributes: {
         name: { type: "string", maxLength: 256, required: true, allowNull: false },
+        users: { collection: "user", via: "teams" },
         //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
         //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
         //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

@@ -25,6 +25,10 @@ module.exports.routes = {
     "GET /tasks": { action: "tasks/get" },
     "GET /tasks/:id": { action: "tasks/get-by-id" },
 
+    "GET /labels": { action: "labels/get" },
+    "POST /labels": { action: "labels/create" },
+
+    "GET /users": { action: "users/get" },
     "POST /users/register": { action: "users/register" },
     "POST /users/login": { action: "users/login" },
 

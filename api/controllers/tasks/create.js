@@ -7,7 +7,9 @@ module.exports = {
     description: "Create task.",
 
     inputs: {
-        ..._.omit(Task.attributes, ["id", "createdDate", "updatedDate"]),
+        ..._.omit(Task.attributes, ["id", "createdDate", "updatedDate", "assignee", "createdBy", "comments", "label"]),
+        assignee: { type: "json", required: true },
+        labels: { type: "json" },
     },
 
     exits: {
@@ -17,8 +19,18 @@ module.exports = {
     },
 
 
-    fn: async function (inputs) {
-        return await Task.create(inputs).fetch();
+    fn: async function (inputs, exits) {
+        const createdTask = await Task.create({
+            ...inputs,
+            assignee: inputs.assignee.id,
+            createdBy: this.req.user.id,
+            comments: [],
+            labels: inputs.labels || []
+        }).fetch();
+
+        const task = await Task.findOne({ id: createdTask.id }).populateAll();
+
+        return exits.success(task);
     }
 
 

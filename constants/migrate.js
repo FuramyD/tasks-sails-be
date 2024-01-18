@@ -1,5 +1,5 @@
 
 
 module.exports = {
-    MIGRATION: "drop",
-}
+    MIGRATION: "alter",
+};

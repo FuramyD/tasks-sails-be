@@ -25,7 +25,7 @@ module.exports = {
             where: {
                 title: { contains: search || "" }
             }
-        });
+        }).populateAll();
     }
 
 

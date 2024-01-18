@@ -1,6 +1,6 @@
 const { generate: generateJwt } = require("../../auth/jwt");
 const bcrypt = require("bcrypt-promise");
-const options = require("../../strategies/jwt-options");
+const options = require("../../../../tickets-management/api/strategies/jwt-options");
 
 module.exports = {
 
@@ -22,7 +22,7 @@ module.exports = {
             statusCode: 500,
         },
         invalidInput: {
-            statusCode: 401,
+            statusCode: 403,
         }
     },
 

@@ -16,6 +16,7 @@ module.exports = {
         username: { type: "string", maxLength: 256, minLength: 4, unique: true, required: true, allowNull: false },
         email: { type: "string", maxLength: 256, required: true, unique: true, allowNull: false },
         password: { type: "string", maxLength: 16, minLength: 6, required: true, allowNull: false },
+        teams: { collection: "team", via: "users" }
 
         //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
         //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
@@ -38,7 +39,6 @@ module.exports = {
         sails.helpers.passwords.hashPassword.with({ password: valuesToSet.password }).exec((err, hashedPassword)=> {
             if (err) { return proceed(err); }
             valuesToSet.password = hashedPassword;
-            console.log({ hashedPassword });
             return proceed();
         });
     },
