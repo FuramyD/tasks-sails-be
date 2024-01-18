@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const options = require("../../../tickets-management/api/strategies/jwt-options");
+const options = require("../strategies/jwt-options");
 
 module.exports = {
     generate: (id, email) => jwt.sign({ id, email }, options.secretOrKey, {

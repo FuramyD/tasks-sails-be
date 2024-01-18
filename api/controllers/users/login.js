@@ -1,6 +1,6 @@
 const { generate: generateJwt } = require("../../auth/jwt");
 const bcrypt = require("bcrypt-promise");
-const options = require("../../../../tickets-management/api/strategies/jwt-options");
+const options = require("../../strategies/jwt-options");
 
 module.exports = {
 
